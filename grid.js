@@ -24,12 +24,21 @@ for (let i = 0; i < widthEls.length; i++) {
   for (let x = 0; x < fracs.length; x++) {
     const y = x - 1;
 
+    let val = '';
+    if (fracs[x].match(/\//)) {
+      // Fraction
+      val = `calc(100% * ${fracs[x]})`;
+    } else {
+      // Fixed
+      val = fracs[x];
+    }
+
     if (x === 0) {
       // Insert base width
       sheet.insertRule(
         `
 [data-w="${widthEl.dataset.w}"] {
-  width: calc(100% * ${fracs[x]});
+  width: ${val};
 }`,
         sheet.cssRules.length
       );
@@ -39,7 +48,7 @@ for (let i = 0; i < widthEls.length; i++) {
         `
 @media (min-width: ${breakpoints[y]}px) {
   [data-w="${widthEl.dataset.w}"] {
-    width: calc(100% * ${fracs[x]});
+    width: ${val};
   }
 }`,
         sheet.cssRules.length
