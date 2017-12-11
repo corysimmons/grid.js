@@ -1,5 +1,7 @@
 # grid.js
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/corysimmons/grid.js.svg)](https://greenkeeper.io/)
+
 Simple fractional JS grid prototype. Makes adding fractions to markup easy.
 
 ## Installation
